@@ -20,16 +20,17 @@ func main() {
 	defer cli.Close()
 
 	// put
-	putResp, err := cli.Put(context.TODO(), "/wb/info", "123.456.123.123:8080")
+	/*putResp, err := cli.Put(context.TODO(), "/wb/info", "123.456.123.123:8080")
 	putResp, err = cli.Put(context.TODO(), "/wb/info/etc", "123.456.123.124:8081")
 	if err != nil {
 		log.Fatal("put key失败：", err)
 		return
 	}
-	fmt.Println(*putResp)
+	fmt.Println(*putResp)*/
 
-	// get, withPrefix() 把前缀是/wb/info的都找出来
-	getResp, err := cli.Get(context.TODO(), "/wb/info", clientv3.WithPrefix())
+	// get, withPrefix() 把前缀符合的都找出来
+	//getResp, err := cli.Get(context.TODO(), "/example/score_service/", clientv3.WithPrefix())
+	getResp, err := cli.Get(context.TODO(), "/", clientv3.WithPrefix())
 	if err != nil {
 		log.Fatal("get key 失败: ", err)
 	}
